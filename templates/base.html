@@ -1,0 +1,59 @@
+{% load static %}
+<html>
+	<head>
+		<title>Rooster Equipments</title>
+		<script type="text/javascript" src="{% static 'jquery-3.3.1.min.js' %}"></script>		
+		<script type="text/javascript" charset="utf8" src="{% static 'DataTables/datatables.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'DataTables/datatables.css' %}"/>
+		<script type="text/javascript" charset="utf8" src="{% static 'js/bootstrap.min.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+		<link rel="icon" href="{% static 'logo.png' %}">
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-center" style="background-color: rgb(245,245,245)">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	<img src="{% static 'logo.png' %}" width="20%">
+      <a class="navbar-brand" href="/" style="color: black; font-weight: 500;">Rooster Equipments</a>
+    </div>
+    <div>
+    <ul class="nav navbar-nav navbar-right" style="display: inline-block;">
+    		<li style="display: inline-block;"><a href="/"><button type="button" class="btn btn-default">Home</button></a></li>
+      		<li style="display: inline-block;"><a href="/project"><button type="button" class="btn btn-default">Projects</button></a></li>
+          <li style="display: inline-block;"><a href="/vendordata"><button type="button" class="btn btn-default">Vendor Data</button></a></li>
+          <li style="display: inline-block;"><a href="/purchasedata"><button type="button" class="btn btn-default">Purchase Data</button></a></li>
+          <li style="display: inline-block;"><a href="/job"><button type="button" class="btn btn-default">Daily Job</button></a></li>
+          
+            <li style="display: inline-block;"><a href="/product"><button type="button" class="btn btn-default">Products</button></a></li>
+            <li style="display: inline-block;"><a href="/customer"><button type="button" class="btn btn-default">Customers</button></a></li>
+            <li style="display: inline-block;"><a href="/vendor"><button type="button" class="btn btn-default">Vendors</button></a></li>
+            <li style="display: inline-block;"><a href="/material"><button type="button" class="btn btn-default">Materials</button></a></li>
+      		<li style="display: inline-block;"><a href="/admin"><button type="button" class="btn btn-default">Admin</button></a></li>
+    </ul>
+  </div></div>
+</nav>
+<div style="padding: 2em 0.5em 2em 0.5em;">
+{% if user.is_authenticated %}
+	{% block content%}
+
+	{% endblock %}
+
+{% else %}
+	<h1>Login via Admin</h1>
+{% endif %}
+</div>
+<div style="position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: rgb(60,60,60);
+  text-align: center;
+  font-family: monospace;
+    background-color: white;
+    font-size: 12px;
+">
+  <p>Rooster Equipments 2019-2020</p>
+</div>
+	</body>
+</html>

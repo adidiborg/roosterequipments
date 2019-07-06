@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+	<script type="text/javascript">
+			$(document).ready(function() {
+    				$('#example').DataTable();
+			} );
+	</script>
+<h2>PURCHASE DATA</h2>
+	<br>
+
+	<div class="text-right" style="display: inline;"><a href="/purchasedata/new/"><button type="button" class="btn btn-default">New Supplier Entry</button></a></div>
+	  
+
+	  <br><br>
+
+	{% if purchasedatas_list %}
+	<table id="example" class="table table-bordered display table-striped" style="width:100%">
+    		<thead class="thead-dark">
+            		<tr>
+				<th>Sr No</th>
+				<th>Supplier Name</th>
+				<th>Material Name</th>
+				<th>Quantity</th>
+				<th>In Date</th>
+				</tr>
+        	</thead>
+        	<tbody>
+    		{% for purchasedata in purchasedatas_list %}
+		<tr>
+        		<td>{{ purchasedata.sr_no }}</td>
+        		<td>{{ purchasedata.supplier }}</td>
+        		<td>{{ purchasedata.material }}</td>
+        		<td>{{ purchasedata.quantity }}</td>
+        		<td>{{ purchasedata.in_date }}</td>
+	  	</tr>    
+	{% endfor %}
+		</tbody>
+
+	</table>
+	{% else %}
+    		<p>No details are available.</p>
+	{% endif %}
+{% endblock %}

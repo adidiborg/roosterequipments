@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>New Vendor</h2>
+    <br>
+
+    <form method="POST" class="vendor-form">{% csrf_token %}
+      {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="reset" class="reset btn btn-default">Reset</button>
+        <li style="list-style: none;display: inline-block;"><a href="/vendor"><button type="button" class="btn btn-default">Cancel</button></a></li>
+    </form>
+{% endblock %}

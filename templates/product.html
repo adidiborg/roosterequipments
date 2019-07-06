@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+	<script type="text/javascript">
+			$(document).ready(function() {
+    				$('#example').DataTable();
+			} );
+	</script>
+<h2>PRODUCTS</h2>
+	<br>
+
+
+	<div class="text-right" style="display: inline;"><a href="/product/new/"><button type="button" class="btn btn-default">New Product</button></a></div>
+	<div class="text-right" style="display: inline;"><a href="/subproduct/new/"><button type="button" class="btn btn-default">New Subproduct</button></a></div>
+	<div class="text-right" style="display: inline;"><a href="/subsubproduct/new/"><button type="button" class="btn btn-default">New Sub Subproduct</button></a></div>
+	  
+
+	  <br><br>
+
+	{% if subproducts_list %}
+	<table id="example" class="table table-bordered display table-striped" style="width:100%">
+    		<thead class="thead-dark">
+            		<tr>
+				<th>Subproduct</th>
+				<th>Product</th>
+				</tr>
+        	</thead>
+        	<tbody>
+    		{% for subproduct in subproducts_list %}
+		<tr>
+        		<td>{{ subproduct.subproduct }}</td>
+        		<td>{{ subproduct.product }}</td>
+	  	</tr>    
+	{% endfor %}
+		</tbody>
+
+	</table>
+	{% else %}
+    		<p>No details are available.</p>
+	{% endif %}
+{% endblock %}

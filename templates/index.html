@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+	<script type="text/javascript">
+			$(document).ready(function() {
+    				$('#example').DataTable();
+			} );
+	</script>
+	<h2>PROJECTS</h2>
+	<br>
+
+	<div><a href="{% url 'project_new' %}"><button type="button" class="btn btn-default">New Project</button></a></div>
+	  <br><br>
+	{% if projects_list %}
+	<table id="example" class="table table-bordered display table-striped" style="width:100%">
+    		<thead class="thead-dark">
+            		<tr>
+				<th>Project No</th>
+				<th>Start Date</th>
+				<th>Customer</th>
+				<th>Product</th>
+				<th>Subproduct</th>
+				<th>Quantity</th>
+				<th>End Date</th>
+				<th>FLAG</th>
+            		</tr>
+        	</thead>
+        	<tbody>
+    		{% for project in projects_list %}
+
+		<tr>
+        		<td>{{ project.project_no }}</td>
+        		<td>{{ project.start_date }}</td>
+        		<td>{{ project.customer_name }}</td>
+        		<td>{{ project.product }}</td>
+        		<td>{{ project.subproduct }}</a></td>
+        		<td>{{ project.quantity }}</td>
+        		<td>{{ project.end_date }}</td>
+        		
+        		{% if project.end_date < project.present %}
+					<td style="background-color: red;">
+				{% elif project.end_date == project.present %}
+					<td style="background-color: yellow;">
+				{% else %}
+					<td style="background-color: blue;">
+        		{% endif %}
+
+	  	</tr>    
+	{% endfor %}
+		</tbody>
+
+	</table>
+{% if listing.is_past_due %}
+    In the past
+{% else %}
+    {{ listing.date|date:"d M Y" }}
+{% endif %}
+
+	{% else %}
+    		<p>No details are available.</p>
+	{% endif %}
+{% endblock %}

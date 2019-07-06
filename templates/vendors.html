@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+	<script type="text/javascript">
+			$(document).ready(function() {
+    				$('#example').DataTable();
+			} );
+	</script>
+<h2>VENDORS</h2>
+	<br>
+
+	<div><a href="{% url 'vendor_new' %}"><button type="button" class="btn btn-default">New Vendor</button></a></div>
+	  <br><br>
+	{% if vendors_list %}
+	<table id="example" class="table table-bordered display table-striped" style="width:100%">
+    		<thead class="thead-dark">
+            		<tr>
+				<th>Vendor name</th>
+				<th>Address</th>
+				<th>Contact Person</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>GST</th>
+				<th>Credit Period</th>
+				
+            		</tr>
+        	</thead>
+        	<tbody>
+    		{% for vendor in vendors_list %}
+		<tr>
+        		<td>{{ vendor.vendor_name }}</td>
+        		<td>{{ vendor.address }}</td>
+        		<td>{{ vendor.contact_person }}</td>
+        		<td>{{ vendor.email }}</td>
+        		<td>{{ vendor.phone }}</a></td>
+        		<td>{{ vendor.GST }}</td>
+        		<td>{{ vendor.credit_period }}</td>
+
+	  	</tr>    
+	{% endfor %}
+		</tbody>
+
+	</table>
+	{% else %}
+    		<p>No details are available.</p>
+	{% endif %}
+{% endblock %}
